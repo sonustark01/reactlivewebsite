@@ -1,0 +1,10 @@
+cpu internet send a request to server and server will send files of html,css and javascript files
+in single page app internet will send a request to server only one time and server will send html,css and javascript jsx bundle files
+
+
+we will add bootstrap in our application
+we will add this in index.html in public folder
+
+
+replace class with className
+and close all tag

@@ -1,0 +1,65 @@
+props means properties 
+like we can write name at the time of use of components at the time of use in app.js
+
+
+we will make a component name navbar 
+using rafce build snippet
+
+derfault function return and name function return
+let make two files module1.mjs and module2.mjs
+
+module1.mjs
+const a = "harry";
+const b = "rohan";
+const c = "sonu ";
+const d = "rashi";
+
+export default c;
+export { b };
+export { c };
+export { d };
+
+
+module2.mjs
+import ui, { b, c, d } from './module1.mjs'
+console.log(ui);
+console.log(b);
+console.log(c);
+console.log(d);
+
+// here we can write anything in place of ui
+
+
+now making navbar
+and using props 
+
+const Navbar = (props) => {
+    return(
+        <>
+        //html codes
+        use as a props.name
+        </>
+    )
+}
+
+<Navbar name="sonuStark"></Navbar>
+
+proptypes : so that we can only send required type of data
+impt for import
+import PropTypes from 'prop-types'
+
+Navbar.propTypes = {
+    title: PropTypes.string,
+    aboutText: PropTypes.string
+}
+
+default props
+Navbar.defaultProps = {
+    title: 'set title here'
+};
+
+isrequired
+Navbar.propTypes = {
+    title: PropTypes.string.isRequired,
+    aboutText: PropTypes.string.isRequired
+}

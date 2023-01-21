@@ -1,0 +1,2 @@
+npx create-react-app NameOfApp
+starting a project name textutils
