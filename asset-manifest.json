@@ -1,15 +1,11 @@
 {
-  "files": {
-    "main.css": "/textutilityapp/static/css/main.39ae686d.css",
-    "main.js": "/textutilityapp/static/js/main.b33ca1fd.js",
-    "static/js/787.7f320c1d.chunk.js": "/textutilityapp/static/js/787.7f320c1d.chunk.js",
-    "index.html": "/textutilityapp/index.html",
-    "main.39ae686d.css.map": "/textutilityapp/static/css/main.39ae686d.css.map",
-    "main.b33ca1fd.js.map": "/textutilityapp/static/js/main.b33ca1fd.js.map",
-    "787.7f320c1d.chunk.js.map": "/textutilityapp/static/js/787.7f320c1d.chunk.js.map"
-  },
-  "entrypoints": [
-    "static/css/main.39ae686d.css",
-    "static/js/main.b33ca1fd.js"
-  ]
+  "main.js": "/textutilityapp/static/js/main.3a6e3ba0.chunk.js",
+  "main.js.map": "/textutilityapp/static/js/main.3a6e3ba0.chunk.js.map",
+  "static/js/1.ffc0cc4d.chunk.js": "/textutilityapp/static/js/1.ffc0cc4d.chunk.js",
+  "static/js/1.ffc0cc4d.chunk.js.map": "/textutilityapp/static/js/1.ffc0cc4d.chunk.js.map",
+  "runtime~main.js": "/textutilityapp/static/js/runtime~main.4d67c2be.js",
+  "runtime~main.js.map": "/textutilityapp/static/js/runtime~main.4d67c2be.js.map",
+  "index.html": "/textutilityapp/index.html",
+  "precache-manifest.be773ee5ca27ad3ea94ffc677cb661f1.js": "/textutilityapp/precache-manifest.be773ee5ca27ad3ea94ffc677cb661f1.js",
+  "service-worker.js": "/textutilityapp/service-worker.js"
 }
