@@ -1,143 +1,84 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useState } from 'react'
 
-
-
-// export default function TextForm(props) {
-//     const handleUpClick1 = () => {
-//         console.log("Uppercase was clicked" + text);
-//         let newtext = text.toUpperCase();
-//         setText(newtext);
-//         // setText("you have clicked on handle up click");
-//     }
-//     const handleUpClick2 = () => {
-//         console.log("Uppercase was clicked" + text);
-//         let newtext = text.toLowerCase();
-//         setText(newtext);
-//         // setText("you have clicked on handle up click");
-//     }
-//     const handleOnChange = (event) => {
-//         console.log("On change");
-//         setText(event.target.value);
-//     }
-//     const [text, setText] = useState('');
-//     return (
-//         <>
-//             <div classNameName='container'>
-//                 <h1>{props.heading}</h1>
-//                 <div classNameName="mb-3">
-//                     <textarea classNameName="form-control" value={text} onChange={handleOnChange} id="mybox" rows="10"></textarea>
-//                 </div>
-//                 <button type="button" classNameName="btn btn-primary mx-2" onClick={handleUpClick1}>Convert to uppercases</button>
-//                 <button type="button" classNameName="btn btn-primary" onClick={handleUpClick2}>Convert to lowercases</button>
-//                 <div classNameName="container my-3">
-//                     <h1>your text summary</h1>
-//                     <h4>{text.split(' ').length} words and {text.length} characters</h4>
-//                     <h4>{0.008 * text.split(' ').length} Minutes read</h4>
-//                 </div>
-//                 <h2>preview</h2>
-//                 <p>{text}</p>
-//             </div>
-//         </>
-//     )
-// }
-
-
-
-
-export default function TextForm(props) {
-
-    const handleUpClick1 = () => {
-        let newtext = text.toUpperCase();
-        setText(newtext);
-
+const Textform = (props) => {
+    let [text, settext] = useState('');
+    let [past, setpast] = useState('');
+    const changehandler = (e) => {
+        // e.preventdefault;
+        settext(e.target.value);
+        console.log(text);
     }
-    const handleUpClick2 = () => {
 
-        let newtext = text.toLowerCase();
-        setText(newtext);
-
+    const converttoupper = () => {
+        let data = text;
+        data = data.toUpperCase();
+        settext(data);
     }
-    const handleUpClick3 = () => {
-        setText("");
+
+    const converttolower = () => {
+        settext(text.toLowerCase());
     };
-    const handleUpClick4 = () => {
-        let newtext = text.split(" ");
-        let newcapital = '';
 
-        for (let i = 0; i < newtext.length; i++) {
+    const sampledata = () => {
+        let data = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis quos veritatis ipsum nihil? Dolorem, omnis et. Odio voluptatem harum laudantium. Aliquam quisquam dolore veniam repellendus doloribus culpa sit consequuntur labore sint repudiandae suscipit nesciunt ex quaerat vero recusandae, nisi, voluptatem officia dignissimos quae? Perspiciatis repudiandae recusandae iste. Impedit, nisi consectetur?";
+        settext(data);
+    };
 
-            newcapital += newtext[i][0].toUpperCase();
-            for (let j = 1; j < newtext[i].length; j++) {
-                newcapital += newtext[i][j].toLowerCase();
+    const cleararea = () => {
+        setpast(text);
+        settext("");
+    };
+
+    const capitalize = () => {
+        let data = text.split(" ");
+        let finaldata = "";
+        for (let i = 0; i < data.length; i++) {
+            finaldata += data[i][0].toUpperCase();
+            for (let j = 1; j < data[i].length; j++) {
+                finaldata += data[i][j];
             }
-            newcapital += " ";
-
+            finaldata += ' ';
         }
-        setText(newcapital);
+        settext(finaldata);
     };
 
-    const handleUpClick5 = () => {
-        navigator.clipboard.writeText(text);
-    };
-
-    // const handleUpClick6 = () => {
-    //     let newt = text.split(" ");
-    //     let appt = '';
-    //     for (let i = 0; i < newt.length; i++) {
-    //         if (newt[i][newt[i].length - 1] === ' ') {
-    //             for (let j = 1; j < newt[i].length; j++) {
-    //                 appt += newt[i][j];
-    //             }
-    //             appt += ' ';
-    //         }
-    //         if (newt[i][newt[i].length - 1] !== ' ') {
-    //             appt += newt[i];
-    //             appt += ' ';
-    //         }
-    //     }
-    //     setText(appt);
-    // };
-
-    const handleOnChange = (event) => {
-        console.log("On change");
-        setText(event.target.value);
+    const removespace = () => {
+        let data = "";
+        for (let i = 0; i < text.length; i++) {
+            if (text[i] === ' ') {
+                if (text[i + 1] === ' ') {
+                    continue;
+                }
+            }
+            data += text[i];
+        }
+        settext(data);
     }
-    const [text, setText] = useState('Enter text here');
 
+    const previoustext = () => {
+        settext(past);
+    };
 
     return (
         <>
-            <div>
-                <div className="mb-3 my-3">
-                    <h1>{props.title}</h1>
-                    <textarea className="form-control stringCopied" id="mybox" rows="8" value={text} onChange={handleOnChange} />
-                </div>
-                <button className="btn btn-primary mx-2 my-5" onClick={handleUpClick2}>Convert To Lowercase</button>
-                <button className="btn btn-primary " onClick={handleUpClick1}>Convert To Uppercase</button>
-                <button className="btn btn-primary mx-2" onClick={handleUpClick3}>Clear Text area</button>
-                <button className="btn btn-primary " onClick={handleUpClick4}>Capitalize</button>
-                <button className="btn btn-primary mx-2" onClick={handleUpClick5}>Copy</button>
-                {/* <button className="btn btn-primary " onClick={handleUpClick6}>Remove Extra Space</button> */}
-
+            <div className="box" style={{ width: '100%', height: '50vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <textarea name="inputtext" id="inputtext" onChange={changehandler} value={text} cols="150" rows="10" style={{ boxShadow: `5px 5px 5px 1px ${props.mode === 'dark' ? '#eeeeee' : '#111111'}`, borderRadius: '20px', padding: '20px' }}></textarea>
             </div>
-            <div className='my-4'>
-                <h1>Your text Summary</h1>
-                <p>{text.split(" ").length} words and {text.length} characters</p>
-                <p>{text.split(" ").length * 0.008} Minutes read</p>
-                <h4>preview</h4>
-                <p>{text}</p>
+
+            <div className="controlbox" style={{ width: '100%', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
+                <div className="box" style={{ width: '60%', height: '80px', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <button type="button" className="btn btn-primary my-2 mx-2" onClick={cleararea} style={{ boxShadow: `2px 2px 2px 1px ${props.mode === 'dark' ? '#eeeeee' : '#111111'}` }}>Clear Area</button>
+                    <button type="button" className="btn btn-primary my-2 mx-2" onClick={converttoupper} style={{ boxShadow: `2px 2px 2px 1px ${props.mode === 'dark' ? '#eeeeee' : '#111111'}` }}>Convert To Uppercase</button>
+                    <button type="button" className="btn btn-primary my-2 mx-2" onClick={converttolower} style={{ boxShadow: `2px 2px 2px 1px ${props.mode === 'dark' ? '#eeeeee' : '#111111'}` }}>Convert To Lowercase</button>
+                    <button type="button" className="btn btn-primary my-2 mx-2" onClick={sampledata} style={{ boxShadow: `2px 2px 2px 1px ${props.mode === 'dark' ? '#eeeeee' : '#111111'}` }}>Sample Data</button>
+                    <button type="button" className="btn btn-primary my-2 mx-2" onClick={capitalize} style={{ boxShadow: `2px 2px 2px 1px ${props.mode === 'dark' ? '#eeeeee' : '#111111'}` }}>Capitalize</button>
+                    <button type="button" className="btn btn-primary my-2 mx-2" onClick={removespace} style={{ boxShadow: `2px 2px 2px 1px ${props.mode === 'dark' ? '#eeeeee' : '#111111'}` }}>Remove Extra Space</button>
+                    <button type="button" className="btn btn-primary my-2 mx-2" onClick={previoustext} style={{ boxShadow: `2px 2px 2px 1px ${props.mode === 'dark' ? '#eeeeee' : '#111111'}` }}>Previous Text</button>
+                </div>
             </div>
         </>
     )
 }
 
-
-
-// if (newt[i][newt[i].length - 1] === ' ') {
-//     for (let j = 1; j < newt[i].length; j++) {
-//         appt += newt[i][j];
-//     }
-// }
-
-//
-// Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe illum magnam maiores doloremque earum, rerum numquam, aut dolor unde omnis libero incidunt ducimus molestiae itaque, asperiores explicabo at dolore nobis?
+export default Textform

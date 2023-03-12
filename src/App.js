@@ -1,28 +1,35 @@
-import './App.css';
+import React from 'react'
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import Contact from './components/Contact';
 import Navbar from './components/Navbar';
-import TextForm from './components/TextForm';
+import { useState } from 'react';
 
+const App = () => {
+    let [mode, setmode] = useState('light');
 
-function App() {
-  return (
-    <>
-      {/* <div classNameName="main-c" >
-        <Navbar title="utilis" aboutText="About mE" />
-        {/* <Greet /> */}
-      {/* <div classNameName="conatiner"> */}
-      {/* <TextForm heading="Enter the text to analyse" /> */}
-      {/* </div> */}
-      {/* <div classNameName="container"><About /></div> */}
-      {/* </div>  */}
+    const toggledark = () => {
+        if (mode === 'light') {
+            setmode('dark');
+            document.body.style.color = '#ffffff';
+            document.body.style.backgroundColor = '#000000';
+        } else {
+            setmode('light');
+            document.body.style.backgroundColor = '#ffffff';
+            document.body.style.color = '#000000';
+        }
+    }
 
-      <Navbar title='sonuSTARK' aboutText="aboutUS"></Navbar>
-      {/* <Navbar title='sonu'></Navbar> */}
-      <div className="container">
-        <TextForm title="Enter text below to analize"></TextForm>
-      </div>
+    return (
+        <>
+            <Navbar title='TextUtilis' mode={mode} onclick={toggledark} />
+            <Routes>
+                <Route path='/' element={<Home mode={mode} />} />
+                <Route path='/contact' element={<Contact />} />
+            </Routes>
 
-    </>
-  );
+        </>
+    )
 }
 
-export default App;
+export default App
